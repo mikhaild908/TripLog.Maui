@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bindablemaps="clr-namespace:TripLog.Maui.Controls"
+             xmlns:viewmodels="clr-namespace:TripLog.Maui.ViewModels"
+             x:DataType="viewmodels:DetailViewModel"
+             x:Class="TripLog.Maui.Views.DetailPage"
+             Title="{Binding Entry.Title}">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <bindablemaps:BindableMap x:Name="theMap"
+                                      Grid.RowSpan="3"
+                                      PinSource="{Binding Entry.Pin}" />
+            <BoxView Grid.Row="1" BackgroundColor="White" Opacity=".8" CornerRadius="10" />
+            <StackLayout Padding="10" Grid.Row="1" BackgroundColor="Azure">
+                <Label Text="{Binding Entry.Title}" HorizontalOptions="Center" />
+                <Label Text="{Binding Entry.Date, StringFormat='{0:M}'}" HorizontalOptions="Center" />
+                <Label Text="{Binding Entry.Rating, StringFormat='{0} star rating'}" HorizontalOptions="Center" />
+                <Label Text="{Binding Entry.Notes}" HorizontalOptions="Center" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
